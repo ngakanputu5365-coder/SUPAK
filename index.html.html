@@ -1,0 +1,119 @@
+<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Supervisi Akademik SMPN 4 Tegallalang</title>
+<style>
+:root{--bg:#f3f6f2;--card:#fff;--tx:#17251d;--mu:#5d6b63;--ac:#17694a;--ac2:#e8f3ed;--bd:#dbe3dd;--wa:#c98a00;--bad:#c2410c;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1713;--card:#17211b;--tx:#e6efe9;--mu:#9aab9f;--ac:#4fc08d;--ac2:#1d2f25;--bd:#2a3a30;--wa:#e5b53d;--bad:#f08a55}}
+:root[data-theme="dark"]{--bg:#0f1713;--card:#17211b;--tx:#e6efe9;--mu:#9aab9f;--ac:#4fc08d;--ac2:#1d2f25;--bd:#2a3a30;--wa:#e5b53d;--bad:#f08a55}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.5 "Source Sans 3",system-ui,Segoe UI,sans-serif}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;margin:.2em 0}
+header{background:var(--ac);color:#fff;padding:14px 16px}header h1{font-size:19px;margin:0}header small{opacity:.85}
+nav{display:flex;gap:4px;overflow-x:auto;padding:8px;background:var(--card);border-bottom:1px solid var(--bd);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+nav button{white-space:nowrap;border:0;background:none;color:var(--mu);padding:8px 12px;border-radius:8px;font:inherit;cursor:pointer}
+nav button.on{background:var(--ac2);color:var(--ac);font-weight:700}
+main{max-width:980px;margin:auto;padding:14px}
+.c{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px;margin-bottom:12px}
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+input,select,textarea,button.b{font:inherit;color:var(--tx);background:var(--bg);border:1px solid var(--bd);border-radius:8px;padding:7px 9px}
+textarea{width:100%;min-height:90px}
+button.b{background:var(--ac);color:#fff;border:0;cursor:pointer}button.g{background:var(--bg);color:var(--tx);border:1px solid var(--bd)}
+.k{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.k div{background:var(--ac2);border-radius:10px;padding:12px}.k b{display:block;font:700 26px Georgia,serif;color:var(--ac)}
+.w{overflow-x:auto}table{border-collapse:collapse;width:100%}th,td{border-bottom:1px solid var(--bd);padding:6px 8px;text-align:left;vertical-align:top}th{color:var(--mu);font-weight:600}
+.r{display:flex;align-items:center;gap:8px;margin:5px 0}.r span{width:150px;flex:none;font-size:13px}.r i{display:block;height:16px;background:var(--ac);border-radius:4px;min-width:2px}.r em{font-size:12px;color:var(--mu);font-style:normal}
+.row{display:flex;gap:10px;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--bd)}.row span{flex:1}
+.pie{width:140px;height:140px;border-radius:50%;flex:none}.pw{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.mu{color:var(--mu);font-size:13px}.ttd{display:flex;justify-content:flex-end;margin-top:30px}.ttd div{width:260px;text-align:center}
+@media(max-width:560px){.r span{width:100px}}
+@media print{header,nav,.bar,.np{display:none!important}body{background:#fff;color:#000}.c{border:0}}
+</style></head><body>
+<header><h1>Supervisi Akademik</h1><small>SMP Negeri 4 Tegallalang</small><small id="st"> · Mode lokal</small></header>
+<nav id="nav"></nav><main id="app"></main>
+<script>
+const ASP=[["Perencanaan",["Modul ajar selaras tujuan","Tujuan pembelajaran jelas","Asesmen sudah direncanakan","Diferensiasi sudah direncanakan"]],
+["Pembukaan",["Apersepsi dan motivasi","Menyampaikan tujuan","Mengaitkan dengan pengalaman siswa","Kesiapan kelas"]],
+["Penguasaan Materi",["Konsep akurat","Materi runtut","Contoh kontekstual","Keterkaitan antar topik"]],
+["Strategi dan Metode",["Model pembelajaran sesuai","Siswa terlibat aktif","Pertanyaan pemantik","Diferensiasi saat KBM"]],
+["Media dan Teknologi",["Media relevan","Pemanfaatan TIK","Sumber belajar beragam","Penggunaan media tepat"]],
+["Interaksi dan Kelas",["Komunikasi efektif","Pengelolaan waktu","Iklim kelas positif","Umpan balik ke siswa"]],
+["Penilaian dan Penutup",["Asesmen formatif","Refleksi bersama siswa","Kesimpulan pembelajaran","Remedial/pengayaan"]]];
+const PRE=["Capaian dan tujuan pembelajaran","Alur tujuan pembelajaran","Modul ajar","Asesmen diagnostik","Strategi/metode","Media dan sumber belajar","Rencana asesmen","Diferensiasi","Penguatan profil pelajar Pancasila"];
+const KOM=["Penguasaan materi","Perencanaan pembelajaran","Pelaksanaan pembelajaran","Penilaian dan evaluasi","Pemanfaatan teknologi","Pengelolaan kelas","Pembelajaran berdiferensiasi","Refleksi dan inovasi","Komunikasi dengan siswa","Kolaborasi dan pengembangan diri"];
+const Q={Reflektif:["Bagaimana perasaan Bapak/Ibu tentang pembelajaran tadi?","Bagian mana yang menurut Anda paling berhasil?","Apa yang akan Anda ubah jika mengulang pembelajaran ini?","Apa tujuan Anda pada pembelajaran hari ini?","Seberapa dekat hasilnya dengan rencana Anda?","Apa yang mengejutkan Anda di kelas tadi?","Apa yang Anda pelajari dari pengalaman ini?","Apa yang paling menantang bagi Anda?","Jika menilai diri sendiri, di mana posisi Anda?","Apa yang ingin Anda kembangkan lebih jauh?"],
+Eksplorasi:["Apa yang terjadi saat siswa tampak kesulitan?","Bagaimana Anda tahu siswa sudah memahami tujuan?","Data apa yang Anda pakai untuk menyesuaikan aktivitas?","Apa yang siswa lakukan saat Anda menjelaskan?","Siswa mana yang paling aktif dan paling pasif, mengapa?","Apa yang menjadi penyebab menurut Anda?","Bagaimana reaksi siswa terhadap media yang dipakai?","Apa yang sudah pernah Anda coba sebelumnya?","Bagaimana Anda mengelola waktu pada kegiatan inti?","Apa hambatan terbesar di kelas ini?"],
+Strategi:["Strategi apa yang bisa meningkatkan keterlibatan semua siswa?","Sumber daya apa yang Anda butuhkan?","Apa langkah kecil pertama yang bisa dicoba minggu depan?","Ada alternatif lain yang bisa dicoba?","Bagaimana cara melibatkan siswa yang pasif?","Apa yang bisa dipelajari dari rekan guru lain?","Bagaimana asesmen formatif bisa lebih tajam?","Strategi mana yang paling realistis dengan waktu Anda?","Bagaimana memanfaatkan teknologi untuk tujuan ini?","Apa risikonya dan bagaimana mengatasinya?"],
+Komitmen:["Apa yang akan Anda lakukan, kapan, dan bagaimana mengukurnya?","Dukungan apa yang Anda harapkan dari saya?","Kapan kita bertemu lagi untuk meninjau hasilnya?","Apa tanda bahwa langkah Anda berhasil?","Apa yang mungkin menghalangi, dan rencana cadangannya?","Dari 1 sampai 10, seberapa yakin Anda melaksanakannya?","Kesepakatan apa yang akan kita catat hari ini?","Siapa yang bisa membantu Anda melaksanakannya?"],
+Apresiasi:["Apa kekuatan Anda yang paling terlihat hari ini?","Praktik baik mana yang layak dibagikan ke rekan guru?","Apa yang membuat Anda bangga dari kelas ini?","Apa yang siswa lakukan dengan baik berkat usaha Anda?","Bagian persiapan mana yang paling rapi?","Terima kasih atas keterbukaan Anda hari ini.","Apa yang dapat Anda ajarkan kepada saya dari sesi ini?","Perubahan positif apa yang terlihat sejak supervisi lalu?"]};
+const SEM=["2025/26 Genap","2026/27 Ganjil","2026/27 Genap"],ST=["ASN","PPPK","Non-ASN"];
+const T=[["dash","Dashboard"],["guru","Database Guru"],["pra","Pra-Observasi"],["obs","Observasi"],["fk","Catatan Fakta"],["co","Coaching"],["tl","Tindak Lanjut"],["kom","Target"],["mon","Monitoring"],["gr","Grafik"],["rek","Rekap"]];
+let S={g:[],r:{},sem:SEM[1],gid:null,tab:"dash",kep:"Ngakan Putu Suwendra",nip:""},DB=null,last={},tm;
+try{const u=JSON.parse(localStorage.getItem("ui26"));if(u)Object.assign(S,u)}catch(e){}
+function flush(){try{localStorage.setItem("ui26",JSON.stringify({sem:S.sem,gid:S.gid,tab:S.tab}))}catch(e){}
+if(!DB){try{localStorage.setItem("sup26",JSON.stringify({g:S.g,r:S.r,kep:S.kep,nip:S.nip}))}catch(e){}return}
+const w=(p,o)=>{const j=JSON.stringify(o);if(last[p]!==j){last[p]=j;DB.doc(p).set(o).catch(()=>{})}};
+S.g.forEach(g=>w("guru/"+g.id,g));Object.keys(S.r).forEach(k=>w("sup/"+k,S.r[k]));w("cfg/school",{kep:S.kep,nip:S.nip});
+Object.keys(last).forEach(p=>{const [c,id]=p.split("/");if((c=="guru"&&!S.g.some(g=>g.id==id))||(c=="sup"&&!S.r[id])){delete last[p];DB.doc(p).delete().catch(()=>{})}})}
+const save=()=>{clearTimeout(tm);tm=setTimeout(flush,500)};
+const E=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const key=(g,s)=>g+"_"+SEM.indexOf(s);
+const rec=()=>S.r[key(S.gid,S.sem)]=S.r[key(S.gid,S.sem)]||{pre:[],o:{},fk:"",tl:[],kom:{}};
+const get=(g,s)=>S.r[key(g,s)];
+const OK=[];ASP.forEach((a,i)=>a[1].forEach((_,j)=>OK.push(i+"."+j)));
+const avg=(o,ks)=>{const v=ks.map(k=>+o[k]).filter(x=>x>0);return v.length?v.reduce((a,b)=>a+b,0)/v.length*25:null};
+const sc=r=>r?avg(r.o,OK):null;
+const asc=(r,i)=>r?avg(r.o,ASP[i][1].map((_,j)=>i+"."+j)):null;
+const pred=n=>n==null?"-":n>=90?"Amat Baik":n>=80?"Baik":n>=70?"Cukup":"Perlu Pembinaan";
+const f=n=>n==null?"-":Math.round(n*10)/10;
+const mean=a=>{a=a.filter(x=>x!=null);return a.length?a.reduce((x,y)=>x+y,0)/a.length:null};
+const sem=s=>S.g.map(g=>({g,r:get(g.id,s)})).filter(x=>x.r);
+const bars=(a,max=100)=>a.map(([l,v])=>`<div class="r"><span>${E(l)}</span><i style="width:${(v||0)/max*60}%"></i><em>${f(v)}</em></div>`).join("");
+const tls=s=>{const c={selesai:0,berjalan:0,pending:0};sem(s).forEach(x=>x.r.tl.forEach(t=>c[t.s]++));return c};
+function pie(c){const col=["#2e9e5b","#e0a100","#c2410c"],k=Object.keys(c),t=k.reduce((a,x)=>a+c[x],0);if(!t)return'<p class="mu">Belum ada data tindak lanjut.</p>';let a=0,g=k.map((x,i)=>{const s=a;a+=c[x]/t*100;return`${col[i]} ${s}% ${a}%`}).join(",");
+return`<div class="pw"><div class="pie" style="background:conic-gradient(${g})"></div><div>${k.map((x,i)=>`<div><b style="color:${col[i]}">■</b> ${x}: ${c[x]}</div>`).join("")}</div></div>`}
+const need=()=>S.g.length?`<div class="bar"><select onchange="S.gid=this.value;save();R()">${S.g.map(g=>`<option value="${g.id}"${g.id==S.gid?" selected":""}>${E(g.nama)}</option>`).join("")}</select></div>`:`<div class="c">Tambahkan guru dulu di tab Database Guru.</div>`;
+const V={
+dash(){const x=sem(S.sem),d=x.filter(y=>sc(y.r)!=null),c=tls(S.sem);
+return`<div class="k"><div><b>${S.g.length}</b>Total guru</div><div><b>${d.length}/${S.g.length}</b>Sudah disupervisi</div><div><b>${f(mean(d.map(y=>sc(y.r))))}</b>Rata-rata skor</div><div><b>${c.selesai}/${c.selesai+c.berjalan+c.pending}</b>TL selesai</div></div>
+<div class="c" style="margin-top:12px"><h3>Skor per aspek, rata-rata sekolah</h3>${bars(ASP.map((a,i)=>[a[0],mean(x.map(y=>asc(y.r,i)))]))}</div>`},
+guru(){return`<div class="c"><h3>Tambah guru</h3><div class="bar"><input id="n" placeholder="Nama"><input id="p" placeholder="NIP"><input id="m" placeholder="Mapel"><select id="s">${ST.map(s=>`<option>${s}</option>`)}</select><button class="b" onclick="addG()">Tambah</button></div>
+<p class="mu">Atau tempel banyak data sekaligus, satu guru per baris: nama;nip;mapel;status</p><textarea id="bulk"></textarea><button class="b" onclick="bulk()">Impor</button><div class="bar" style="margin-top:10px"><label class="b g" style="cursor:pointer">Impor dari file CSV<input type="file" accept=".csv,.txt" hidden onchange="impF(this)"></label><button class="b g" onclick="expG()">Ekspor guru (CSV)</button></div><p class="mu">CSV dari Excel atau Google Sheets: kolom nama, nip, mapel, status.</p></div>
+<div class="c w"><b>Total ${S.g.length} guru</b> (${ST.map(s=>s+": "+S.g.filter(g=>g.st==s).length).join(", ")})<table><tr><th>Nama</th><th>NIP</th><th>Mapel</th><th>Status</th><th></th></tr>${S.g.map(g=>`<tr><td>${E(g.nama)}</td><td>${E(g.nip)}</td><td>${E(g.mapel)}</td><td>${g.st}</td><td><button class="b g" onclick="delG('${g.id}')">Hapus</button></td></tr>`).join("")}</table></div>`},
+pra(){const r=rec();return need()+`<div class="c"><h3>Form Pra-Observasi</h3><p class="mu">Centang aspek rencana pembelajaran yang sudah siap.</p>${PRE.map((p,i)=>`<label class="row"><span>${p}</span><input type="checkbox" ${r.pre[i]?"checked":""} onchange="rec().pre[${i}]=this.checked;save()"></label>`).join("")}
+<p class="mu np">Gunakan tombol Cetak di tab Rekap, atau cetak halaman ini.</p><button class="b np" onclick="print()">Cetak form</button></div>`},
+obs(){const r=rec();return need()+ASP.map((a,i)=>`<div class="c"><h3>${i+1}. ${a[0]} <small class="mu">${f(asc(r,i))}</small></h3>${a[1].map((t,j)=>`<div class="row"><span>${t}</span><select onchange="rec().o['${i}.${j}']=this.value;save();R()"><option value="0">-</option>${[1,2,3,4].map(n=>`<option ${r.o[i+"."+j]==n?"selected":""}>${n}</option>`)}</select></div>`).join("")}</div>`).join("")+`<div class="c"><b>Skor total: ${f(sc(r))}</b> (${pred(sc(r))})<p class="mu">Skala 1 sampai 4. Isi berdasarkan bukti nyata di kelas.</p></div>`},
+fk(){const r=rec();return need()+`<div class="c"><h3>Catatan Fakta</h3><p class="mu">Catat fakta, bukan interpretasi. Contoh: 09.12 guru bertanya "Apa yang kalian lihat?", 6 siswa menjawab.</p><textarea style="min-height:260px" oninput="rec().fk=this.value;save()">${E(r.fk)}</textarea></div>`},
+co(){return Object.entries(Q).map(([k,v])=>`<div class="c"><h3>${k}</h3><ul>${v.map(q=>`<li>${q}</li>`).join("")}</ul></div>`).join("")+`<p class="mu">46 pertanyaan dalam 5 kategori coaching.</p>`},
+tl(){const r=rec();return need()+`<div class="c"><h3>Kesepakatan Tindak Lanjut</h3>${r.tl.map((t,i)=>`<div class="row"><span>${E(t.t)}</span><select onchange="rec().tl[${i}].s=this.value;save();R()">${["pending","berjalan","selesai"].map(s=>`<option ${t.s==s?"selected":""}>${s}</option>`)}</select><button class="b g" onclick="rec().tl.splice(${i},1);save();R()">x</button></div>`).join("")||'<p class="mu">Belum ada kesepakatan.</p>'}
+<div class="bar" style="margin-top:10px"><input id="nt" style="flex:1" placeholder="Kesepakatan baru"><button class="b" onclick="addT()">Tambah</button></div></div>`},
+kom(){const r=rec(),x=sem(S.sem);return need()+`<div class="c w"><h3>Target Perkembangan</h3><table><tr><th>Aspek</th><th>Skor 1-4</th><th>Guru</th><th>Rata-rata sekolah</th></tr>${KOM.map((k,i)=>`<tr><td>${k}</td><td><select onchange="rec().kom[${i}]=this.value;save();R()"><option value="0">-</option>${[1,2,3,4].map(n=>`<option ${r.kom[i]==n?"selected":""}>${n}</option>`)}</select></td><td>${f(+r.kom[i]*25||null)}</td><td>${f(mean(x.map(y=>+y.r.kom[i]*25||null)))}</td></tr>`).join("")}</table><b>Rata-rata: ${f(avg(r.kom,KOM.map((_,i)=>i)))} (${pred(avg(r.kom,KOM.map((_,i)=>i)))})</b></div>`},
+mon(){return`<div class="c w"><h3>Monitoring per Guru</h3><table><tr><th>Guru</th>${SEM.map(s=>`<th>${s}</th>`).join("")}<th>Tren</th><th>Rekomendasi</th></tr>${S.g.map(g=>{const v=SEM.map(s=>sc(get(g.id,s))),a=v.filter(x=>x!=null),d=a.length>1?a[a.length-1]-a[a.length-2]:null,t=d==null?"Belum cukup data":d>2?"Meningkat":d<-2?"Menurun":"Stagnan";
+return`<tr><td>${E(g.nama)}</td>${v.map(x=>`<td>${f(x)}</td>`).join("")}<td>${t}</td><td>${t=="Menurun"?"Coaching intensif dan observasi ulang":t=="Stagnan"?"Variasikan strategi, beri teman sejawat":t=="Meningkat"?"Pertahankan, jadikan praktik baik":"Lakukan supervisi lanjutan"}</td></tr>`}).join("")}</table></div>`},
+gr(){const x=sem(S.sem),sk=x.map(y=>sc(y.r)),P=["Amat Baik","Baik","Cukup","Perlu Pembinaan"];
+return`<div class="c"><h3>1. Skor per aspek</h3>${bars(ASP.map((a,i)=>[a[0],mean(x.map(y=>asc(y.r,i)))]))}</div><div class="c"><h3>2. Status tindak lanjut</h3>${pie(tls(S.sem))}</div><div class="c"><h3>3. Tren lintas semester</h3>${bars(SEM.map(s=>[s,mean(sem(s).map(y=>sc(y.r)))]))}</div><div class="c"><h3>4. Sebaran predikat</h3>${bars(P.map(p=>[p,sk.filter(v=>v!=null&&pred(v)==p).length]),Math.max(1,x.length))}</div>`},
+rek(){const x=sem(S.sem),d=x.map(y=>sc(y.r)).filter(v=>v!=null);return`<div class="c"><div class="bar np"><input placeholder="Nama kepala sekolah" value="${E(S.kep)}" oninput="S.kep=this.value;save()"><input placeholder="NIP" value="${E(S.nip)}" oninput="S.nip=this.value;save()"><button class="b" onclick="print()">Cetak laporan</button><button class="b g" onclick="expR()">Ekspor ke spreadsheet</button></div>
+<h2>Laporan Akhir Supervisi Akademik</h2><p>SMP Negeri 4 Tegallalang, semester ${S.sem}. Dari ${S.g.length} guru, ${d.length} sudah disupervisi dengan rata-rata skor ${f(mean(d))} (${pred(mean(d))}).</p>
+<div class="w"><table><tr><th>No</th><th>Nama</th><th>Status</th><th>Skor</th><th>Predikat</th><th>TL selesai</th></tr>${S.g.map((g,i)=>{const r=get(g.id,S.sem);return`<tr><td>${i+1}</td><td>${E(g.nama)}</td><td>${g.st}</td><td>${f(sc(r))}</td><td>${pred(sc(r))}</td><td>${r?r.tl.filter(t=>t.s=="selesai").length+"/"+r.tl.length:"-"}</td></tr>`}).join("")}</table></div>
+<div class="ttd"><div>Tegallalang, ${new Date().toLocaleDateString("id-ID",{day:"numeric",month:"long",year:"numeric"})}<br>Kepala Sekolah<br><br><br><br><u>${E(S.kep)||"................"}</u><br>NIP. ${E(S.nip)}</div></div></div>`}
+};
+function R(){document.getElementById("nav").innerHTML=T.map(t=>`<button class="${t[0]==S.tab?"on":""}" onclick="S.tab='${t[0]}';save();R()">${t[1]}</button>`).join("");
+if(!S.gid&&S.g[0])S.gid=S.g[0].id;
+document.getElementById("app").innerHTML=`<div class="bar np"><label>Semester <select onchange="S.sem=this.value;save();R()">${SEM.map(s=>`<option ${s==S.sem?"selected":""}>${s}</option>`)}</select></label></div>`+V[S.tab]()}
+const uid=()=>Math.random().toString(36).slice(2,9);
+function addG(){const n=$("n").value.trim();if(!n)return;S.g.push({id:uid(),nama:n,nip:$("p").value,mapel:$("m").value,st:$("s").value});save();R()}
+function bulk(){impTxt($("bulk").value)}
+function impTxt(t){let n=0;t.split(/\r?\n/).forEach((l,i)=>{const p=l.split(/[;,\t]/).map(x=>x.trim().replace(/^"|"$/g,""));if(!p[0]||(i==0&&p[0].toLowerCase()=="nama"))return;if(S.g.some(g=>g.nama==p[0]&&g.nip==(p[1]||"")))return;S.g.push({id:uid(),nama:p[0],nip:p[1]||"",mapel:p[2]||"",st:ST.find(s=>s.toLowerCase()==(p[3]||"").toLowerCase())||"ASN"});n++});save();R();alert(n+" guru ditambahkan.")}
+function impF(inp){const fl=inp.files[0];if(!fl)return;const rd=new FileReader();rd.onload=()=>{impTxt(rd.result);inp.value=""};rd.readAsText(fl)}
+async function dl(name,rows){try{const d=await claude.use("downloads");if(!d)return alert("Unduhan tidak tersedia di tampilan ini.");const csv="\ufeff"+rows.map(r=>r.map(c=>'"'+String(c??"").replace(/"/g,'""')+'"').join(",")).join("\n");await d.save({filename:name,data:csv})}catch(e){if(!e||e.code!="declined")alert("Gagal mengunduh: "+(e&&e.message||e))}}
+const expG=()=>dl("guru.csv",[["Nama","NIP","Mapel","Status"],...S.g.map(g=>[g.nama,g.nip,g.mapel,g.st])]);
+const expR=()=>dl("rekap-supervisi.csv",[["Nama","NIP","Mapel","Status","Semester","Skor","Predikat",...ASP.map(a=>a[0]),"TL selesai","TL total",...OK.map(k=>"Ind "+k)],...S.g.map(g=>{const r=get(g.id,S.sem);return[g.nama,g.nip,g.mapel,g.st,S.sem,f(sc(r)),pred(sc(r)),...ASP.map((_,i)=>f(asc(r,i))),r?r.tl.filter(t=>t.s=="selesai").length:"",r?r.tl.length:"",...OK.map(k=>r?r.o[k]||"":"")]})]);
+function delG(id){if(confirm("Hapus guru ini beserta datanya?")){S.g=S.g.filter(g=>g.id!=id);Object.keys(S.r).forEach(k=>{if(k.startsWith(id+"_"))delete S.r[k]});if(S.gid==id)S.gid=null;save();R()}}
+function addT(){const v=$("nt").value.trim();if(v){rec().tl.push({t:v,s:"pending"});save();R()}}
+const $=i=>document.getElementById(i);
+const refresh=()=>{const a=document.activeElement;if(a&&/INPUT|TEXTAREA|SELECT/.test(a.tagName)&&a.closest("main"))return;S.g.sort((a,b)=>a.nama.localeCompare(b.nama));R()};
+const L=()=>{try{const o=JSON.parse(localStorage.getItem("sup26"));if(o){S.g=o.g||[];S.r=o.r||{};S.kep=o.kep||S.kep;S.nip=o.nip||"";refresh()}}catch(e){}};
+R();
+(async()=>{try{const c=window.claude&&await claude.use("db");if(!c){L();return}DB=c;$("st").textContent=" · Database bersama aktif";
+const sub=(col,fn)=>DB.collection(col).onSnapshot(s=>{let ch=0;s.docChanges().forEach(x=>{const id=x.doc.id,p=col+"/"+id;if(x.type=="removed"){delete last[p];fn(id,null);ch=1}else{const d=x.doc.data(),j=JSON.stringify(d);if(last[p]!==j){last[p]=j;fn(id,d);ch=1}}});if(ch)refresh()},()=>{});
+sub("guru",(id,d)=>{S.g=S.g.filter(g=>g.id!=id);if(d)S.g.push(Object.assign({},d,{id}))});
+sub("sup",(id,d)=>{if(d)S.r[id]=d;else delete S.r[id]});
+sub("cfg",(id,d)=>{if(d){S.kep=d.kep||S.kep;S.nip=d.nip||""}})}catch(e){L()}})();
+</script></body></html>
